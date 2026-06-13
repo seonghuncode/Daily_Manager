@@ -3,29 +3,8 @@ import EmotionItem from "../components/EmotionItem";
 import Button from "../components/Button";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
-const emotionList = [
-  {
-    emotionId: 1,
-    emotionName: "완전 좋음",
-  },
-  {
-    emotionId: 2,
-    emotionName: "좋음",
-  },
-  {
-    emotionId: 3,
-    emotionName: "그럭저럭",
-  },
-  {
-    emotionId: 4,
-    emotionName: "나쁨",
-  },
-  {
-    emotionId: 5,
-    emotionName: "끔찍함",
-  },
-];
+import { emotionList } from "../util/constants";
+import { getStringedDate } from "../util/get-Stringed-date";
 
 const Editor = ({ initData, onSubmit }) => {
   //사용자가 새 일기 쓰기에서 입력하는 값을 저장하는 state
@@ -47,19 +26,19 @@ const Editor = ({ initData, onSubmit }) => {
     }
   }, [initData]);
 
-  const getStringedDate = (targetDate) => {
-    //날짜 YYYY-MM-DD
-    let year = targetDate.getFullYear();
-    let month = targetDate.getMonth() + 1;
-    let date = targetDate.getDate();
-    if (month < 10) {
-      month = `0${month}`;
-    }
-    if (date < 10) {
-      date = `0${date}`;
-    }
-    return `${year}-${month}-${date}`;
-  };
+  // const getStringedDate = (targetDate) => {
+  //   //날짜 YYYY-MM-DD
+  //   let year = targetDate.getFullYear();
+  //   let month = targetDate.getMonth() + 1;
+  //   let date = targetDate.getDate();
+  //   if (month < 10) {
+  //     month = `0${month}`;
+  //   }
+  //   if (date < 10) {
+  //     date = `0${date}`;
+  //   }
+  //   return `${year}-${month}-${date}`;
+  // };
 
   const onChangeInput = (e) => {
     // console.log(e.target.name);
