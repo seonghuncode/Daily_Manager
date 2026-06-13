@@ -1,7 +1,7 @@
 import "./Editor.css";
 import EmotionItem from "../components/EmotionItem";
 import Button from "../components/Button";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const emotionList = [
@@ -27,7 +27,7 @@ const emotionList = [
   },
 ];
 
-const Editor = ({ onSubmit }) => {
+const Editor = ({ initData, onSubmit }) => {
   //사용자가 새 일기 쓰기에서 입력하는 값을 저장하는 state
   const [input, setInput] = useState({
     createdDate: new Date(),
@@ -36,6 +36,16 @@ const Editor = ({ onSubmit }) => {
   });
 
   const nav = useNavigate();
+
+  //initData가 변경될 때 마다
+  useEffect(() => {
+    if (initData) {
+      setInput({
+        ...initData,
+        createdDate: new Date(Number(initData.createdDate)),
+      });
+    }
+  }, [initData]);
 
   const getStringedDate = (targetDate) => {
     //날짜 YYYY-MM-DD

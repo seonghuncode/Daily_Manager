@@ -18,6 +18,7 @@ export default defineConfig([
       parserOptions: { ecmaFeatures: { jsx: true } },
     },
     rules: {
+      "react-hooks/set-state-in-effect": "off", //useEffect 내부에서 setState를 호출하는 패턴을 검사
       "no-unused-vars": "off",
       "react/prop-types": "off",
       "react-refresh/only-export-components": "off",
