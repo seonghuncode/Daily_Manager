@@ -5,6 +5,7 @@ import Editor from "../components/Editor";
 import { useContext, useEffect, useState } from "react";
 import { DiaryDispatchContext, DiaryStateContext } from "../App";
 import useDiary from "../hooks/useDiary";
+import usePageTitle from "../hooks/usePageTitle";
 
 const Edit = () => {
   const params = useParams();
@@ -13,6 +14,7 @@ const Edit = () => {
   //해당 컴포넌트에서 사용할 함수를 받는다.
   const { onDelete, onUpdate } = useContext(DiaryDispatchContext);
   const curDiaryItem = useDiary(params.id);
+  usePageTitle(`${params.id}번 일기 수정`);
 
   //중복으로 여러 곳에서 사용하기 때문에 custom Hook으로 만들어서 사용
   // const data = useContext(DiaryStateContext); //수정 페이지에서 입력된 값을 자동으로 입력된 형태로 만들어 주기 위해서 필요한 데이터를 받아온다.
